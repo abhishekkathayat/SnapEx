@@ -50,15 +50,24 @@ export default StyleSheet.create({
         fontWeight: 'bold'
     },
     galleryGrid: {
-        flex: 1,
-        flexDirection: 'row',
         width: windowWidth,
+        flexDirection: 'row',
         flexWrap: 'wrap',
         backgroundColor: 'transparent'
     },
     galleryImages: {
-        height: 100,
-        width: 100,
+        height: Math.floor((windowWidth - 50) / 4),
+        width: Math.floor((windowWidth - 50) / 4),
         margin: 5
+    },
+    backdrop: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    imageModal: {
+        height: Math.ceil(0.6 * windowHeight),
+        width: Math.ceil(0.6 * windowWidth),
+        borderRadius: 5,
+        borderColor: '#fff',
+        borderWidth: 2
     }
 })

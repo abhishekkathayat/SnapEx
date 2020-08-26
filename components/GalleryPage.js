@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Image, Text } from 'react-native';
-import { Layout, Icon, TopNavigation, TopNavigationAction, Divider } from '@ui-kitten/components';
+import { SafeAreaView, ScrollView, Image, TouchableWithoutFeedback } from 'react-native';
+import { Layout, Text, Icon, TopNavigation, TopNavigationAction, Divider, Modal } from '@ui-kitten/components';
 
 import styles from './CameraStyles';
 
@@ -9,14 +9,20 @@ const BackArrow = (props) => (
 );
 
 class GalleryPage extends React.Component {
+    state = {
+        visible: false,
+        uri: ''
+    };
+    setVisible = (visible, uri) => this.setState({ visible, uri });
     render () {
+        const { visible, uri } = this.state;
+        const album = this.props.route.params.album.assets;
         const navigateBack = () => {
             this.props.navigation.navigate('Home');
         };
         const backAction = () => (
             <TopNavigationAction icon={BackArrow} onPress={navigateBack}/>
-        )
-        const album = this.props.route.params.album.assets;
+        );
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <TopNavigation
@@ -25,13 +31,22 @@ class GalleryPage extends React.Component {
                     style={styles.topNav}
                 />
                 <Divider/>
-                <ScrollView>
+                <ScrollView style={{ margin: 5 }}>
                     <Layout style={styles.galleryGrid}>
                         {album.map(({ uri }) => (
-                            <Image key={uri} source={{ uri }} style={styles.galleryImages}/>
+                            <TouchableWithoutFeedback key={ uri }
+                                onPress={() => this.setVisible(true, uri)}>
+                                <Image source={{ uri }} style={styles.galleryImages}/>
+                            </TouchableWithoutFeedback>
                         ))}
                     </Layout>
                 </ScrollView>
+                <Modal
+                    visible={visible}
+                    backdropStyle={styles.backdrop}
+                    onBackdropPress={() => this.setVisible(false, '')}>
+                        <Image source={{ uri }} style={styles.imageModal}/>
+                </Modal>
             </SafeAreaView>
         );
     }
