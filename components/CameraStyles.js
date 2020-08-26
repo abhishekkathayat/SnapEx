@@ -40,5 +40,25 @@ export default StyleSheet.create({
         borderWidth: 2,
         borderColor: '#fff',
         backgroundColor: 'transparent'
+    },
+    topNav: {
+        height: 80,
+        paddingTop: 35
+    },
+    topNavText: {
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    galleryGrid: {
+        flex: 1,
+        flexDirection: 'row',
+        width: windowWidth,
+        flexWrap: 'wrap',
+        backgroundColor: 'transparent'
+    },
+    galleryImages: {
+        height: 100,
+        width: 100,
+        margin: 5
     }
 })

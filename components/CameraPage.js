@@ -36,7 +36,8 @@ class CameraPage extends React.Component {
             const albumAssets = await MediaLibrary.getAssetsAsync({
                 album: album.id
             });
-            console.log(albumAssets);  
+            console.log(albumAssets);
+            this.props.navigation.navigate('Gallery', {album: albumAssets});
         }
         else {
             Alert.alert('No Images in the Gallery.');
