@@ -11,7 +11,7 @@ export default StyleSheet.create({
         top: 0,
         bottom: 0
     },
-    alignCenter: {
+    toolbarSub: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -19,7 +19,26 @@ export default StyleSheet.create({
     },
     toolbar: {
         flex: 1,
+        height: 140,
+        width: windowWidth,
+        position: "absolute",
         flexDirection: 'row',
+        backgroundColor: 'transparent',
+        bottom: 0
+    },
+    captureBtn: {
+        width: 70,
+        height: 70,
+        borderRadius: 65,
+        borderColor: '#fff',
+        borderWidth: 2,
+        backgroundColor: 'transparent'
+    },
+    imageHolder: {
+        height: 50,
+        width: 50,
+        borderWidth: 2,
+        borderColor: '#fff',
         backgroundColor: 'transparent'
     }
 })
