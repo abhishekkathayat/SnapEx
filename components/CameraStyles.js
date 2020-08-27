@@ -55,10 +55,17 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
         backgroundColor: 'transparent'
     },
-    galleryImages: {
+    galleryImage: {
         height: Math.floor((windowWidth - 50) / 4),
         width: Math.floor((windowWidth - 50) / 4),
-        margin: 5
+        margin: 5,
+        justifyContent: 'flex-end'
+    },
+    galleryImageSelect: {
+        height: 20,
+        width: 20,
+        alignSelf: 'flex-end',
+        margin: 8,
     },
     backdrop: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -69,5 +76,12 @@ export default StyleSheet.create({
         borderRadius: 5,
         borderColor: '#fff',
         borderWidth: 2
+    },
+    uploadButton: {
+        width: 150,
+        borderRadius: 50,
+        position: 'absolute',
+        bottom: 20,
+        right: 20
     }
 })

@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Image, TouchableWithoutFeedback } from 'react-native';
-import { Layout, Text, Icon, TopNavigation, TopNavigationAction, Divider, Modal } from '@ui-kitten/components';
+import { SafeAreaView, ScrollView, Image, ImageBackground, TouchableWithoutFeedback } from 'react-native';
+import { Layout, Text, Icon, TopNavigation, TopNavigationAction, Divider, Modal, Button } from '@ui-kitten/components';
 
 import styles from './CameraStyles';
 
@@ -8,14 +8,54 @@ const BackArrow = (props) => (
     <Icon {...props} name="arrow-ios-back-outline"/>
 );
 
+const uploadIcon = (props) => (
+    <Icon {...props} name="cloud-upload-outline"/>
+);
+
 class GalleryPage extends React.Component {
     state = {
         visible: false,
-        uri: ''
+        uri: '',
+        enableUpload: true,
+        selectedImages: [],
+        startSelection: false
     };
+    
     setVisible = (visible, uri) => this.setState({ visible, uri });
+
+    handleLongPressImage = async(image) => {
+        const found = this.state.selectedImages.find(object => object.id === image.id);
+        if(found !== undefined) {
+            const indexObject = this.state.selectedImages.indexOf(found);
+            if(indexObject > -1) {
+                this.state.selectedImages.splice(indexObject, 1);
+            }
+        } else {
+            this.setState({ selectedImages: [image, ...this.state.selectedImages] });
+        }
+        if(this.state.selectedImages.length != 0) {
+            this.setState({ startSelection: true });
+        } else {
+            this.setState({ startSelection: false });
+        }
+
+        if(this.state.selectedImages.length !== 0) {
+            this.setState({ enableUpload: false });
+        } else {
+            this.setState({ enableUpload: true });
+        }
+    };
+
+    handleShortPressImage = async(visible, image) => {
+        if(this.state.startSelection === true) {
+            this.handleLongPressImage(image);
+        } else {
+            this.setVisible(visible, image.uri);
+        }
+    };
+
     render () {
-        const { visible, uri } = this.state;
+        const { visible, uri, enableUpload, selectedImages } = this.state;
         const album = this.props.route.params.album.assets;
         const navigateBack = () => {
             this.props.navigation.navigate('Home');
@@ -33,20 +73,31 @@ class GalleryPage extends React.Component {
                 <Divider/>
                 <ScrollView style={{ margin: 5 }}>
                     <Layout style={styles.galleryGrid}>
-                        {album.map(({ uri }) => (
+                        {album.map(({uri}, index) => (
                             <TouchableWithoutFeedback key={ uri }
-                                onPress={() => this.setVisible(true, uri)}>
-                                <Image source={{ uri }} style={styles.galleryImages}/>
+                                delayLongPress={200}
+                                onLongPress={this.handleLongPressImage.bind(this, album[index])}
+                                onPress={this.handleShortPressImage.bind(this, true, album[index])}>
+                                    <ImageBackground source={{ uri }} style={styles.galleryImage}>
+                                        <Icon name="checkmark-circle-2-outline" style={styles.galleryImageSelect} fill='#fff'/>
+                                    </ImageBackground>
                             </TouchableWithoutFeedback>
                         ))}
                     </Layout>
                 </ScrollView>
                 <Modal
-                    visible={visible}
-                    backdropStyle={styles.backdrop}
-                    onBackdropPress={() => this.setVisible(false, '')}>
-                        <Image source={{ uri }} style={styles.imageModal}/>
+                visible={visible}
+                backdropStyle={styles.backdrop}
+                onBackdropPress={() => this.setVisible(false, '')}>
+                    <Image source={{ uri }} style={styles.imageModal}/>
                 </Modal>
+                <Button
+                    disabled={enableUpload}
+                    accessoryRight={uploadIcon}
+                    style={styles.uploadButton}
+                > Upload
+                    <Text style={{ color: '#fff', fontWeight: 'bold' }}> ({selectedImages.length}) </Text>
+                </Button>
             </SafeAreaView>
         );
     }
