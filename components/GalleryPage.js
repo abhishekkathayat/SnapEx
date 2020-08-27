@@ -23,7 +23,7 @@ class GalleryPage extends React.Component {
     
     setVisible = (visible, uri) => this.setState({ visible, uri });
 
-    handleLongPressImage = async(image) => {
+    handleLongPressImage = (image) => {
         const found = this.state.selectedImages.find(object => object.id === image.id);
         if(found !== undefined) {
             const indexObject = this.state.selectedImages.indexOf(found);
@@ -38,7 +38,6 @@ class GalleryPage extends React.Component {
         } else {
             this.setState({ startSelection: false });
         }
-
         if(this.state.selectedImages.length !== 0) {
             this.setState({ enableUpload: false });
         } else {
@@ -46,7 +45,7 @@ class GalleryPage extends React.Component {
         }
     };
 
-    handleShortPressImage = async(visible, image) => {
+    handleShortPressImage = (visible, image) => {
         if(this.state.startSelection === true) {
             this.handleLongPressImage(image);
         } else {
@@ -75,12 +74,12 @@ class GalleryPage extends React.Component {
                     <Layout style={styles.galleryGrid}>
                         {album.map(({uri}, index) => (
                             <TouchableWithoutFeedback key={ uri }
-                                delayLongPress={200}
-                                onLongPress={this.handleLongPressImage.bind(this, album[index])}
-                                onPress={this.handleShortPressImage.bind(this, true, album[index])}>
-                                    <ImageBackground source={{ uri }} style={styles.galleryImage}>
-                                        <Icon name="checkmark-circle-2-outline" style={styles.galleryImageSelect} fill='#fff'/>
-                                    </ImageBackground>
+                            delayLongPress={200}
+                            onLongPress={this.handleLongPressImage.bind(this, album[index])}
+                            onPress={this.handleShortPressImage.bind(this, true, album[index])}>
+                                <ImageBackground source={{ uri }} style={styles.galleryImage}>
+                                    <Icon name="checkmark-circle-outline" style={styles.galleryImageSelectIcon} fill='#fff'/>
+                                </ImageBackground>
                             </TouchableWithoutFeedback>
                         ))}
                     </Layout>
@@ -95,8 +94,8 @@ class GalleryPage extends React.Component {
                     disabled={enableUpload}
                     accessoryRight={uploadIcon}
                     style={styles.uploadButton}
-                > Upload
-                    <Text style={{ color: '#fff', fontWeight: 'bold' }}> ({selectedImages.length}) </Text>
+                    onPress={() => {this.props.navigation.navigate('Code Editor')}}
+                > Upload ({selectedImages.length})
                 </Button>
             </SafeAreaView>
         );

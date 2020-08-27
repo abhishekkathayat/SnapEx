@@ -61,7 +61,7 @@ export default StyleSheet.create({
         margin: 5,
         justifyContent: 'flex-end'
     },
-    galleryImageSelect: {
+    galleryImageSelectIcon: {
         height: 20,
         width: 20,
         alignSelf: 'flex-end',
