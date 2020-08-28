@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Drawer, DrawerItem, IndexPath, Icon, Layout, Divider, Text } from '@ui-kitten/components';
 
 import CameraPage from './CameraPage';
 import GalleryPage from './GalleryPage';
-import { CodeEditor } from './CodeEditorPage';
+import CodeEditorPage from './CodeEditorPage';
 
 const StackNavigation = createStackNavigator();
-const TabNavigation = createBottomTabNavigator();
+const DrawerNavigation = createDrawerNavigator();
 
 const CameraIcon = (props) => (
 	<Icon {...props} name='camera-outline'/>
@@ -20,14 +20,39 @@ const CodeEditorIcon = (props) => (
 	<Icon {...props} name='code-outline'/>
 );
 
-const BottomTabBar = ({ navigation, state }) => (
-	<BottomNavigation
-		style = {styles.bottomNavigation}
-		selectedIndex = {state.index}
-		onSelect = {index => navigation.navigate(state.routeNames[index])}>
-			<BottomNavigationTab title='Camera' icon={CameraIcon}/>
-			<BottomNavigationTab title='Code Editor' icon={CodeEditorIcon}/>
-	</BottomNavigation>
+const Header = (props) => (
+	<React.Fragment>
+		<Layout style={styles.header}>
+			<Image source={require('../assets/SnapEx-logo.jpg')} style={[props.style, styles.headerLogo]}/>
+			<Text style={[props.style, styles.headerText]}>SnapEx</Text>
+			<Divider/>
+		</Layout>
+	</React.Fragment>
+);
+
+const Footer = (props) => (
+	<React.Fragment>
+		<Layout style={styles.footer}>
+			<Text style={[props.style, styles.footerText]}>v1.0</Text>
+		</Layout>
+	</React.Fragment>
+);
+
+const DrawerContent = ({ navigation, state }) => (
+	<Drawer
+		header = {Header}
+		footer = {Footer}
+		selectedIndex = {new IndexPath(state.index)}
+		onSelect = {index => navigation.navigate(state.routeNames[index.row])}>
+			<DrawerItem
+				title='Camera' 
+				accessoryLeft={CameraIcon}
+			/>
+			<DrawerItem 
+				title='Code Editor' 
+				accessoryLeft={CodeEditorIcon}
+			/>
+	</Drawer>
 );
 
 const StackNavigator = () => (
@@ -37,22 +62,45 @@ const StackNavigator = () => (
 	</StackNavigation.Navigator>
 )
 
-const TabNavigator = () => (
-	<TabNavigation.Navigator tabBar = {props => <BottomTabBar {...props} />}>
-		<TabNavigation.Screen name='Camera' component={StackNavigator}/>
-		<TabNavigation.Screen name='Code Editor' component={CodeEditor}/>
-	</TabNavigation.Navigator>
+const DrawerNavigator = () => (
+	<DrawerNavigation.Navigator drawerContent = {props => <DrawerContent {...props} />}>
+		<DrawerNavigation.Screen name='Camera' component={StackNavigator}/>
+		<DrawerNavigation.Screen name='Code Editor' component={CodeEditorPage}/>
+	</DrawerNavigation.Navigator>
 );
-
-const styles = StyleSheet.create({
-	bottomNavigation: {
-		height: 75,
-	}
-})
 
 export const AppNavigator = () => (
 	<NavigationContainer>
-		<TabNavigator/>
+		<DrawerNavigator/>
 	</NavigationContainer>
 );
+
+const styles = StyleSheet.create({
+	header: {
+		height: 220,
+		alignItems: 'center',
+		justifyContent: 'flex-end',
+		backgroundColor: 'transparent',
+		marginBottom: 20
+	},
+	footer: {
+		height: 100,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	headerLogo: {
+		height: 100,
+		width: 100
+	},
+	headerText: {
+		fontSize: 18,
+		fontWeight: 'bold',
+		color: '#3366FF'
+	},
+	footerText: {
+		fontSize: 15,
+		fontWeight: 'bold',
+		color: '#7d7d7d'
+	}
+})
 
