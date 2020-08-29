@@ -83,5 +83,69 @@ export default StyleSheet.create({
         position: 'absolute',
         bottom: 20,
         right: 20
+    },
+    topNavCodeEditor: {
+        height: 75,
+        alignItems: "center",
+        justifyContent: 'center'
+    },
+    topNavTextCodeEditor: {
+        fontSize: 17,
+        fontWeight: 'bold',
+        marginTop: 15
+    },
+    textInputDark: {
+        borderColor: 'transparent',
+        backgroundColor: '#24292E'
+    },
+    textDark: {
+        height: 440,
+        color: '#24292E',
+        fontFamily: 'Consolas',
+        lineHeight: 20
+    },
+    textInputLight: {
+        borderColor: 'transparent',
+        backgroundColor: '#fff'
+    },
+    textLight: {
+        height: 440,
+        color: '#fff',
+        fontFamily: 'Consolas',
+        lineHeight: 20
+    },
+    menuHolder: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingTop: 20,
+        alignItems: 'center',
+        borderTopColor: '#3366FF',
+        borderTopWidth: 1
+    },
+    languageButton: {
+        backgroundColor: 'transparent',
+        borderColor: '#7d7d7d',
+        borderWidth: 1,
+        borderRadius: 3,
+        height: 40,
+        width: '99%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: "space-between"
+    },
+    buttonHolder: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingTop: 25,
+        paddingBottom: 20
+    },
+    codeEditorButton: {
+        width: '35%',
+        borderRadius: 50,
+        backgroundColor: '#3366FF',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 9,
+        justifyContent: 'center'
     }
 })
