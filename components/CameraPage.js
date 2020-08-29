@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout, Text } from '@ui-kitten/components';
+import { Layout, Text, Icon } from '@ui-kitten/components';
 import { Camera } from 'expo-camera';
-import { Alert } from 'react-native';
+import { Alert, TouchableOpacity } from 'react-native';
 import * as MediaLibrary from 'expo-media-library';
 
 import styles from './CameraStyles';
@@ -83,6 +83,12 @@ class CameraPage extends React.Component {
                         ref={camera => this.camera = camera}
                     />
                 </Layout>
+                <TouchableOpacity 
+                    onPress={() => {this.props.navigation.openDrawer()}} 
+                    activeOpacity={0.5}
+                    style={{ position: 'absolute', top: 35, left: 25 }}>
+                        <Icon name="menu-2-outline" style={{ height: 30, width: 30 }} fill="#fff"/>
+                </TouchableOpacity>
                 <Toolbar
                     lastCapture = {lastCapture}
                     capturing = {capturing}

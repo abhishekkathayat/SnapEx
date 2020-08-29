@@ -86,8 +86,10 @@ export default StyleSheet.create({
     },
     topNavCodeEditor: {
         height: 75,
-        alignItems: "center",
-        justifyContent: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        position: "relative"
     },
     topNavTextCodeEditor: {
         fontSize: 17,
@@ -99,17 +101,19 @@ export default StyleSheet.create({
         backgroundColor: '#24292E'
     },
     textDark: {
-        height: 440,
+        height: Math.ceil(windowHeight * 0.65),
         color: '#24292E',
         fontFamily: 'Consolas',
-        lineHeight: 20
+        lineHeight: 20,
     },
     textInputLight: {
-        borderColor: 'transparent',
+        borderColor: '#24292E',
+        marginHorizontal: 2,
+        marginTop: 2,
         backgroundColor: '#fff'
     },
     textLight: {
-        height: 440,
+        height: Math.ceil(windowHeight * 0.65),
         color: '#fff',
         fontFamily: 'Consolas',
         lineHeight: 20
@@ -147,5 +151,22 @@ export default StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 9,
         justifyContent: 'center'
+    },
+    errorModalTopBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: 10,
+        alignItems: 'center',
+        height: 50, 
+        borderBottomColor: '#7d7d7d',
+        borderBottomWidth: 1
+    },
+    errorInput: {
+        marginTop: 10,
+        borderColor: 'transparent'
+    },
+    errorInputText: {
+        height: Math.ceil(windowHeight * 0.85),
+        color: '#fe5c5c'
     }
 })
