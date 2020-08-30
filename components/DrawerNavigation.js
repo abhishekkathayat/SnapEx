@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Drawer, DrawerItem, IndexPath, Icon, Layout, Divider, Text } from '@ui-kitten/components';
 
 import CameraPage from './CameraPage';
+import CodeIOPage from './CodeIOPage';
 import GalleryPage from './GalleryPage';
 import CodeEditorPage from './CodeEditorPage';
 
@@ -60,12 +61,19 @@ const StackNavigator = () => (
 		<StackNavigation.Screen name='Home' component={CameraPage}/>
 		<StackNavigation.Screen name='Gallery' component={GalleryPage}/>
 	</StackNavigation.Navigator>
-)
+);
+
+const CEStackNavigator = () => (
+	<StackNavigation.Navigator headerMode='none'>
+		<StackNavigation.Screen name='Code Editor Home' component={CodeEditorPage}/>
+		<StackNavigation.Screen name='Input and Output' component={CodeIOPage}/>
+	</StackNavigation.Navigator>
+);
 
 const DrawerNavigator = () => (
 	<DrawerNavigation.Navigator drawerContent = {props => <DrawerContent {...props} />}>
 		<DrawerNavigation.Screen name='Camera' component={StackNavigator}/>
-		<DrawerNavigation.Screen name='Code Editor' component={CodeEditorPage}/>
+		<DrawerNavigation.Screen name='Code Editor' component={CEStackNavigator}/>
 	</DrawerNavigation.Navigator>
 );
 

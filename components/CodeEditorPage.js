@@ -76,7 +76,6 @@ class CodeEditorPage extends React.Component {
 				style={{ flex: 1 }}>
 					<Layout style={{ position: 'absolute', bottom: 0, width: '100%' }}>
 						<Layout style={styles.menuHolder}>
-							{/**/}
 							<Toggle
 								checked={checked} 
 								onChange={this.onCheckChanged}>
@@ -94,7 +93,7 @@ class CodeEditorPage extends React.Component {
 								<Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 15, marginRight: 5 }}> Build </Text>
 								<Icon name="settings-outline" style={{ height: 20, width: 20 }} fill="#fff"/>
 							</TouchableOpacity>
-							<TouchableOpacity style={styles.codeEditorButton} activeOpacity={0.5}>
+							<TouchableOpacity style={styles.codeEditorButton} activeOpacity={0.5} onPress={()=>{this.props.navigation.navigate('Input and Output')}}>
 								<Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 15 }}> Run </Text>
 								<Icon name="arrow-right-outline" style={{ height: 25, width: 25 }} fill="#fff"/>
 							</TouchableOpacity>

@@ -4,7 +4,7 @@ import { AppLoading } from 'expo';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { AppNavigator } from './components/BottomNavigation';
+import { AppNavigator } from './components/DrawerNavigation';
 
 const loadFonts = () => {
 	return Font.loadAsync({
