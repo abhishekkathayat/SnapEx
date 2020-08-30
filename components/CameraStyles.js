@@ -168,5 +168,29 @@ export default StyleSheet.create({
     errorInputText: {
         height: Math.ceil(windowHeight * 0.85),
         color: '#fe5c5c'
+    },
+    ioSubmitButton: {
+        width: '80%',
+        height: 45,
+        borderRadius: 50,
+        backgroundColor: '#3366FF',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 9,
+        justifyContent: 'center'
+    },
+    ioStatusHolder: {
+        marginTop: 20,
+        marginBottom: 10,
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        backgroundColor: 'transparent', 
+        alignItems: 'center',
+        marginHorizontal: 15,
+        width: '100%'
+    },
+    ioField: {
+        height: Math.ceil(windowHeight * 0.29),
+        color: '#24292E'
     }
 })

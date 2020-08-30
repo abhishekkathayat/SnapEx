@@ -79,10 +79,10 @@ class CodeEditorPage extends React.Component {
 							<Toggle
 								checked={checked} 
 								onChange={this.onCheckChanged}>
-								{checked ? 'Dark' : 'Light'}
+								<Text style={{ fontSize: 15, fontWeight: 'bold', color: '#585858' }}> {checked ? 'Dark' : 'Light'} </Text>
 							</Toggle>
 							<Layout style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-								<Text style={{ marginRight: 15, fontSize: 15 }}>Status :</Text>
+								<Text style={{ marginRight: 15, fontSize: 15, fontWeight: 'bold', color: '#585858' }}>Compile Status :</Text>
 								<TouchableWithoutFeedback onPress={() => this.setErrorVisible(true)} activeOpacity={0.5}>
 									<Icon name="alert-triangle-outline" style={{ height: 25, width: 25 }} fill="#9d9d9d"/>
 								</TouchableWithoutFeedback>
@@ -117,7 +117,7 @@ class CodeEditorPage extends React.Component {
 							multiline={true}
 							textAlignVertical='top'
 							editable={false}
-							value='/!\ Errors are shown here...'
+							value='/!\ Compile Time Errors are shown here...'
 							textStyle={styles.errorInputText}/>
 						</Layout>
 					</Layout>
