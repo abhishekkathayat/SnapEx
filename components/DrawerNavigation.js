@@ -24,7 +24,7 @@ const CodeEditorIcon = (props) => (
 const Header = (props) => (
 	<React.Fragment>
 		<Layout style={styles.header}>
-			<Image source={require('../assets/SnapEx-logo.jpg')} style={[props.style, styles.headerLogo]}/>
+			<Image source={require('../assets/Snapexlogo.png')} style={[props.style, styles.headerLogo]}/>
 			<Text style={[props.style, styles.headerText]}>SnapEx</Text>
 			<Divider/>
 		</Layout>

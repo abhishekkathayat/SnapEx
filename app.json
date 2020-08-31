@@ -4,9 +4,9 @@
     "slug": "SnapEx",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Snapexlogo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Snapexsplash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,6 +21,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.snapex.snapex",
+      "versionCode": 1.0
     }
   }
 }
