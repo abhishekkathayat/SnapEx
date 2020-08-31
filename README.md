@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://github.com/Abhishek-Kathayat/SnapEx/tree/master/assets/Snapexlogo.png" height="150" width="150"/>
+  <img src="https://github.com/Abhishek-Kathayat/SnapEx/blob/master/assets/Snapexlogo.png" height="150" width="150"/>
 </p>
 <h1 align="center"> SnapEx </h1>
-<h3 align="center"> Snap and Execute </h3>
+<h4 align="center"> Snap and Execute </h4>
 <br/>
 <span align="center">
 
