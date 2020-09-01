@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Image, ImageBackground, TouchableWithoutFeedback } from 'react-native';
+import { SafeAreaView, ScrollView, Image, TouchableWithoutFeedback } from 'react-native';
 import { Layout, Text, Icon, TopNavigation, TopNavigationAction, Divider, Modal, Button } from '@ui-kitten/components';
 
 import styles from './CameraStyles';
@@ -77,9 +77,7 @@ class GalleryPage extends React.Component {
                             delayLongPress={200}
                             onLongPress={this.handleLongPressImage.bind(this, album[index])}
                             onPress={this.handleShortPressImage.bind(this, true, album[index])}>
-                                <ImageBackground source={{ uri }} style={styles.galleryImage}>
-                                    <Icon name="checkmark-circle-outline" style={styles.galleryImageSelectIcon} fill='#fff'/>
-                                </ImageBackground>
+                                <Image source={{ uri }} style={styles.galleryImage}/>
                             </TouchableWithoutFeedback>
                         ))}
                     </Layout>
