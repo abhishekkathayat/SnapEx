@@ -19,6 +19,19 @@ class IntroPage extends Component {
           this.props.navigation.navigate('WeLoggedIn')
         }
     }
+    
+    showError() {
+        return (
+           <div className="bg-gray-100 rounded-xl p-8">
+             <h2 className="text-lg font-semibold">ToDo</h2>
+             <div>
+               <Input onChange={this.handleChange} />
+               <p className="font-medium color-red-100">{this.state.error}</p>
+               <ToDoList value={this.state.display} />
+             </div>
+           </div>
+          );
+    }
 
     render() {
         const { 
@@ -73,6 +86,44 @@ const styles = StyleSheet.create({
         marginTop: 50,
         fontSize: 15,
         color: '#1A1A1A'
+    },
+    topNav: {
+        height: 80,
+        paddingTop: 35
+    },
+    topNavText: {
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    galleryGrid: {
+        width: windowWidth,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        backgroundColor: 'transparent'
+    },
+    ioSubmitButton: {
+        width: '80%',
+        height: 45,
+        borderRadius: 50,
+        backgroundColor: '#3366FF',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 9,
+        justifyContent: 'center'
+    },
+    ioStatusHolder: {
+        marginTop: 20,
+        marginBottom: 10,
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        backgroundColor: 'transparent', 
+        alignItems: 'center',
+        marginHorizontal: 15,
+        width: '100%'
+    },
+    ioField: {
+        height: Math.ceil(windowHeight * 0.29),
+        color: '#24292E'
     }
 })
 
