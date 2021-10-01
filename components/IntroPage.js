@@ -33,11 +33,11 @@ class IntroPage extends Component {
                         style={image}
                         source={require('./logo.png')}
                     />
-                    <Text 
-                        style={appName}
-                    >
+                    <Text style={appName}>
                         SnapEx
                     </Text>
+                    <Text>Hello World</Text>
+                      <Text>Contact Us</Text>
                     <Animatable.Text
                         style={text}
                         duration={1500}
@@ -45,7 +45,7 @@ class IntroPage extends Component {
                         easing="linear"
                         iterationCount="infinite"
                     >
-                        Loading...
+                        L.o.a.d.i.n.g...
                     </Animatable.Text>
                     <Text> {(this.props.authenticated) ? 'LOGGED IN' : 'NOT LOGGED IN'} </Text>
             </View>
@@ -73,7 +73,26 @@ const styles = StyleSheet.create({
         marginTop: 50,
         fontSize: 15,
         color: '#1A1A1A'
-    }
+    },
+
+    
+panel: {
+  margintop: 0,
+  marginbottom: 0,
+  fontsize: 16,
+  color: 'inherit'
+},
+pageContent:  {
+    marginbottom: 10
+},
+
+p: {
+    fontfamily: 'Open Sans', 'sans-serif'
+},
+btn: {
+    textshadow: 'none'
+}    
+    
 })
 
 const mapStateToProps = ({ auth }) => {
