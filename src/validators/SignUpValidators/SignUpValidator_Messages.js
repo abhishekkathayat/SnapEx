@@ -4,9 +4,13 @@ export default {
         invalid: 'Mentioned value is invalid'
     },
     type: {
+        username: {
+            missing: 'Please provide a username',
+            invalid: 'The username provided by you is invalid. Username should only contains alphabets, numbers and _.'
+        },
         email: {
             missing: 'Please provide an e-mail',
-            invalid: 'The e-mail mentioned by you is invalid'
+            invalid: 'The e-mail provided by you is invalid.'
         },
         password: {
             rule: {
