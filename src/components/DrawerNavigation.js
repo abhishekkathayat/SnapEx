@@ -28,6 +28,11 @@ const Header = (props) => (
 			<Text style={[props.style, styles.headerText]}>SnapEx</Text>
 			<Divider/>
 		</Layout>
+		<Layout style={styles.header}>
+			<Image source={require('../assets/Snapexlogohead.png')} style={[props.style, styles.headerLogo]}/>
+			<Text style={[props.style, styles.headerText]}>SnapEx Head Alternate</Text>
+			<Divider/>
+		</Layout>
 	</React.Fragment>
 );
 
@@ -109,6 +114,21 @@ const styles = StyleSheet.create({
 		fontSize: 15,
 		fontWeight: 'bold',
 		color: '#7d7d7d'
+	},
+	topNav: {
+		height: 80,
+		paddingTop: 35
+	},
+	topNavText: {
+		fontSize: 18,
+		fontWeight: 'bold'
+	},
+	imageModal: {
+		height: Math.ceil(0.6 * windowHeight),
+		width: Math.ceil(0.6 * windowWidth),
+		borderRadius: 5,
+		borderColor: '#fff',
+		borderWidth: 2
 	}
 })
 
